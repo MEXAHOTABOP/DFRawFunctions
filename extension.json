@@ -1,0 +1,29 @@
+{
+	"name": "DFRawFunctions",
+	"version": "1.6",
+	"author": "Quietust",
+	"url": "http://dwarffortresswiki.org/index.php/User:Quietust",
+	"description": "Dwarf Fortress Raw parser functions",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.33"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "DFRawFunctions::efDFRawFunctions_Initialize"
+	},
+	"AutoloadClasses": {
+		"DFRawFunctions": "DFRawFunctions.php"
+	},
+	"ExtensionMessagesFiles": {
+		"DFRawFunctionsMagic": "DFRawFunctions.magic.php"
+	},
+	"config": {
+    "DFRawEnableDisk": {
+			"value": false
+		},
+    "DFRawPath": {
+			"value": "dirname(__FILE__) .'/raws'"
+		}
+	},
+	"manifest_version": 2
+}

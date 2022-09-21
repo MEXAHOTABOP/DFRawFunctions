@@ -76,15 +76,25 @@ class DFRawFunctions
 		if (!is_dir($wgDFRawPath))
 			return $data;
 
-		$filename = explode(':', $data, 2);
-		if (count($filename) != 2)
-			return $data;
-		$filename = str_replace(array('/', '\\'), '', $filename);
+		global $wgDFRawVersion;
 
-		// HACK to handle both DF2012 and v0.34 - once the /raw pages for 0.34 have been fixed, this can go away
-		if ($filename[0] == 'DF2012') $filename[0] = 'v0.34';
+		$version_name = explode(':', $data, 2);
 
-		$wantfile = $wgDFRawPath .'/'. $filename[0] .'/'. $filename[1];
+		if ( count($version_name) == 2 and $version_name[0] != "") {
+			$version_name = str_replace(array('/', '\\'), '', $version_name);
+			$raw_version = $version_name[0];
+			$file_name = $version_name[1];
+
+			if ($raw_version == 'DF2012') $raw_version = 'v0.34'; // HACK to handle both DF2012 and v0.34 - once the /raw pages for 0.34 have been fixed, this can go away
+		} else {
+			if ( $wgDFRawVersion == "" )
+				return $data;
+
+			$raw_version = $wgDFRawVersion;
+			$file_name = str_replace(array('/', '\\', ":"), '', $data);
+		}
+
+		$wantfile = $wgDFRawPath .'/'. $raw_version .'/'. $file_name;
 
 		if (!is_file($wantfile))
 			return $data;

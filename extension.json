@@ -18,12 +18,15 @@
 		"DFRawFunctionsMagic": "DFRawFunctions.magic.php"
 	},
 	"config": {
-    "DFRawEnableDisk": {
-			"value": false
-		},
-    "DFRawPath": {
-			"value": "dirname(__FILE__) .'/raws'"
-		}
+		"DFRawEnableDisk": {
+				"value": false
+			},
+		"DFRawPath": {
+				"value": "dirname(__FILE__) .'/raws'"
+			},
+		"DFRawVersion": {
+				"value": ""
+			}
 	},
 	"manifest_version": 2
 }
